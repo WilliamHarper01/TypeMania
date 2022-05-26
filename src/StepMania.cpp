@@ -74,7 +74,7 @@
 #include <windows.h>
 #endif
 
-#include "Client.h"
+//#include "Client.h"
 
 void ShutdownGame();
 bool HandleGlobalInputs( const InputEventPlus &input );
@@ -1009,7 +1009,7 @@ int sm_main(int argc, char* argv[])
 	//if (success != CLIENT_SUCCESS)
 		//sm_crash("could not connect to server :(");
 
-	Client::disconnectFromServer();
+	//Client::disconnectFromServer();
 
 	// load preferences and mount any alternative trees.
 	PREFSMAN	= new PrefsManager;
