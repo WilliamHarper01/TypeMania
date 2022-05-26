@@ -1,0 +1,9 @@
+// File for specifying Random Attacks, used by the Random Attacks mod and Attack Mines mod.
+//
+// Sample lines:
+// #ATTACK:drunk;
+// #ATTACK:30% tornado;
+// #ATTACK:-20% beat;
+
+//#ATTACK:blind;
+#ATTACK:30% blink;
