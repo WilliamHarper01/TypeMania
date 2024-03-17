@@ -11,7 +11,7 @@
 #include "XmlFile.h"
 #include "GameState.h" // blame radar calculations.
 #include "RageUtil_AutoPtr.h"
-
+#include <iostream>
 REGISTER_CLASS_TRAITS( NoteData, new NoteData(*pCopy) )
 
 void NoteData::Init()
@@ -22,7 +22,7 @@ void NoteData::Init()
 void NoteData::SetNumTracks( int iNewNumTracks )
 {
 	ASSERT( iNewNumTracks > 0 );
-
+	//ASSERT(iNewNumTracks != 16);
 	m_TapNotes.resize( iNewNumTracks );
 }
 
@@ -1046,7 +1046,7 @@ bool NoteData::GetPrevTapNoteRowForTrack( int track, int &rowInOut ) const
 
 void NoteData::GetTapNoteRange( int iTrack, int iStartRow, int iEndRow, TrackMap::iterator &lBegin, TrackMap::iterator &lEnd )
 {
-	ASSERT_M( iTrack < GetNumTracks(), ssprintf("%i,%i", iTrack, GetNumTracks())  );
+	ASSERT_M( iTrack < GetNumTracks(), ssprintf("tried to select track out of range %i,%i", iTrack, GetNumTracks())  );
 	TrackMap &mapTrack = m_TapNotes[iTrack];
 
 	if( iStartRow > iEndRow )

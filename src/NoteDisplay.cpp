@@ -1245,6 +1245,8 @@ void NoteDisplay::DrawHold(const TapNote& tn,
 	}
 }
 
+int testVal = 0;
+
 void NoteDisplay::DrawActor(const TapNote& tn, Actor* pActor, NotePart part,
 	const NoteFieldRenderArgs& field_args, const NoteColumnRenderArgs& column_args, float fYOffset, float fBeat,
 	bool bIsAddition, float fPercentFadeToFail, float fColorScale,
@@ -1354,6 +1356,24 @@ void NoteDisplay::DrawActor(const TapNote& tn, Actor* pActor, NotePart part,
 		}
 		DISPLAY->TextureTranslate( (bIsAddition ? cache->m_fAdditionTextureCoordOffset[part] : RageVector2(0,0)) + cache->m_fNoteColorTextureCoordSpacing[part]*color );
 	}
+
+	testVal = (testVal + 1) % 4;
+
+	//pActor->SetX(0.0 + 60.0 * (float)testVal);
+	//pActor->SetY(0.0);
+	//pActor->SetZ(0.0);
+
+	float viewx = pActor->GetX();
+	float viewy = pActor->GetY();
+	float viewz = pActor->GetZ();
+
+	float viewrotx = pActor->GetRotationX();
+	float viewroty = pActor->GetRotationY();
+	float viewrotz = pActor->GetRotationZ();
+
+	float viewzoomx = pActor->GetZoomX();
+	float viewzoomy = pActor->GetZoomY();
+	float viewzoomz = pActor->GetZoomZ();
 
 	pActor->Draw();
 

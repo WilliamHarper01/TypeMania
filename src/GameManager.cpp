@@ -34,7 +34,18 @@ enum
 	TRACK_14,
 	TRACK_15,
 	TRACK_16,
+	TRACK_17,
+	TRACK_18,
+	TRACK_19,
+	TRACK_20,
+	TRACK_21,
+	TRACK_22,
+	TRACK_23,
+	TRACK_24,
+	TRACK_25,
+	TRACK_26
 	// 16 tracks needed for beat-double7 and techno-double8
+	// Typing: 26 tracks needed for typing
 };
 
 RString StepsTypeInfo::GetLocalizedString() const
@@ -97,32 +108,245 @@ static const StepsTypeInfo g_StepsTypeInfos[] = {
 	{ "kickbox-quadarm", 4, true, StepsTypeCategory_Single },
 	{ "kickbox-insect", 6, true, StepsTypeCategory_Single },
 	{ "kickbox-arachnid", 8, true, StepsTypeCategory_Single },
+	// typing
+	{ "typing-single",	26,	true,	StepsTypeCategory_Single },
 };
 
+// Important:  Every game must define the buttons: "Start", "Back", "MenuLeft", "Operator" and "MenuRight"
+static const AutoMappings g_AutoKeyMappings_Typing = AutoMappings(
+	"",
+	"",
+	"",
+	AutoMappingEntry(0, KEY_LEFT, GAME_BUTTON_MENULEFT, false),
+	AutoMappingEntry(0, KEY_RIGHT, GAME_BUTTON_MENURIGHT, false),
+	AutoMappingEntry(0, KEY_UP, GAME_BUTTON_MENUUP, false),
+	AutoMappingEntry(0, KEY_DOWN, GAME_BUTTON_MENUDOWN, false),
+
+	AutoMappingEntry(0, KEY_Cq, TYPING_BUTTON_Q, false),
+	AutoMappingEntry(0, KEY_Ca, TYPING_BUTTON_A, false),
+	AutoMappingEntry(0, KEY_Cz, TYPING_BUTTON_Z, false),
+	AutoMappingEntry(0, KEY_Cw, TYPING_BUTTON_W, false),
+	AutoMappingEntry(0, KEY_Cs, TYPING_BUTTON_S, false),
+	AutoMappingEntry(0, KEY_Cx, TYPING_BUTTON_X, false),
+	AutoMappingEntry(0, KEY_Ce, TYPING_BUTTON_E, false),
+	AutoMappingEntry(0, KEY_Cd, TYPING_BUTTON_D, false),
+	AutoMappingEntry(0, KEY_Cc, TYPING_BUTTON_C, false),
+	AutoMappingEntry(0, KEY_Cr, TYPING_BUTTON_R, false),
+	AutoMappingEntry(0, KEY_Cf, TYPING_BUTTON_F, false),
+	AutoMappingEntry(0, KEY_Cv, TYPING_BUTTON_V, false),
+	AutoMappingEntry(0, KEY_Ct, TYPING_BUTTON_T, false),
+	AutoMappingEntry(0, KEY_Cg, TYPING_BUTTON_G, false),
+	AutoMappingEntry(0, KEY_Cb, TYPING_BUTTON_B, false),
+	AutoMappingEntry(0, KEY_Cy, TYPING_BUTTON_Y, false),
+	AutoMappingEntry(0, KEY_Ch, TYPING_BUTTON_H, false),
+	AutoMappingEntry(0, KEY_Cn, TYPING_BUTTON_N, false),
+	AutoMappingEntry(0, KEY_Cu, TYPING_BUTTON_U, false),
+	AutoMappingEntry(0, KEY_Cj, TYPING_BUTTON_J, false),
+	AutoMappingEntry(0, KEY_Cm, TYPING_BUTTON_M, false),
+	AutoMappingEntry(0, KEY_Ci, TYPING_BUTTON_I, false),
+	AutoMappingEntry(0, KEY_Ck, TYPING_BUTTON_K, false),
+	AutoMappingEntry(0, KEY_Co, TYPING_BUTTON_O, false),
+	AutoMappingEntry(0, KEY_Cl, TYPING_BUTTON_L, false),
+	AutoMappingEntry(0, KEY_Cp, TYPING_BUTTON_P, false),
+
+	// unmap confusing default MenuButtons
+	AutoMappingEntry(0, KEY_KP_C8, GameButton_Invalid, false),
+	AutoMappingEntry(0, KEY_KP_C2, GameButton_Invalid, false),
+	AutoMappingEntry(0, KEY_KP_C4, GameButton_Invalid, false),
+	AutoMappingEntry(0, KEY_KP_C6, GameButton_Invalid, false)
+);
+
+// xxx: get this from the theme? (see others)
+// the problem with getting it from the noteskin is that this is meant to be
+// static const; if we switch to anything we likely won't get const anymore
+// but i may be talking out of my ass -aj
+static const int TYPING_COL_SPACING = 64;
+
+static const Style g_Style_Typing_Single =
+{// STYLE_DANCE_SINGLE
+	true,				// m_bUsedForGameplay
+	false,				// m_bUsedForEdit
+	true,				// m_bUsedForDemonstration
+	true,				// m_bUsedForHowToPlay
+	"single",			// m_szName
+	StepsType_typing_single,	// m_StepsType
+	StyleType_OnePlayerTwoSides,		// m_StyleType
+	26,				// m_iColsPerPlayer
+{	// m_ColumnInfo[NUM_PLAYERS][MAX_COLS_PER_PLAYER];
+	{	// PLAYER_1
+		{ TRACK_1,	-TYPING_COL_SPACING * 4.83f, nullptr },
+		{ TRACK_2,	-TYPING_COL_SPACING * 4.5f , nullptr },
+		{ TRACK_3,	-TYPING_COL_SPACING * 4.17f, nullptr },
+		{ TRACK_4,	-TYPING_COL_SPACING * 3.83f, nullptr },
+		{ TRACK_5,	-TYPING_COL_SPACING * 3.5f , nullptr },
+		{ TRACK_6,	-TYPING_COL_SPACING * 3.17f, nullptr },
+		{ TRACK_7,	-TYPING_COL_SPACING * 2.83f, nullptr },
+		{ TRACK_8,	-TYPING_COL_SPACING * 2.5f , nullptr },
+		{ TRACK_9,	-TYPING_COL_SPACING * 2.17f, nullptr },
+		{ TRACK_10,	-TYPING_COL_SPACING * 1.83f, nullptr },
+		{ TRACK_11,	-TYPING_COL_SPACING * 1.5f , nullptr },
+		{ TRACK_12,	-TYPING_COL_SPACING * 1.17f, nullptr },
+		{ TRACK_13,	-TYPING_COL_SPACING * 0.83f, nullptr },
+		{ TRACK_14,	-TYPING_COL_SPACING * 0.5f , nullptr },
+		{ TRACK_15,	-TYPING_COL_SPACING * 0.17f, nullptr },
+		{ TRACK_16,	+TYPING_COL_SPACING * 0.17f, nullptr },
+		{ TRACK_17,	+TYPING_COL_SPACING * 0.5f , nullptr },
+		{ TRACK_18,	+TYPING_COL_SPACING * 0.83f, nullptr },
+		{ TRACK_19,	+TYPING_COL_SPACING * 1.17f, nullptr },
+		{ TRACK_20,	+TYPING_COL_SPACING * 1.5f , nullptr },
+		{ TRACK_21,	+TYPING_COL_SPACING * 1.83f, nullptr },
+		{ TRACK_22,	+TYPING_COL_SPACING * 2.17f, nullptr },
+		{ TRACK_23,	+TYPING_COL_SPACING * 2.5f , nullptr },
+		{ TRACK_24,	+TYPING_COL_SPACING * 3.17f, nullptr },
+		{ TRACK_25,	+TYPING_COL_SPACING * 3.5f, nullptr },
+		{ TRACK_26,	+TYPING_COL_SPACING * 4.17f, nullptr },
+	},
+	{	// PLAYER_2
+		{ TRACK_1,	-TYPING_COL_SPACING * 4.83f, nullptr },
+		{ TRACK_2,	-TYPING_COL_SPACING * 4.5f , nullptr },
+		{ TRACK_3,	-TYPING_COL_SPACING * 4.17f, nullptr },
+		{ TRACK_4,	-TYPING_COL_SPACING * 3.83f, nullptr },
+		{ TRACK_5,	-TYPING_COL_SPACING * 3.5f , nullptr },
+		{ TRACK_6,	-TYPING_COL_SPACING * 3.17f, nullptr },
+		{ TRACK_7,	-TYPING_COL_SPACING * 2.83f, nullptr },
+		{ TRACK_8,	-TYPING_COL_SPACING * 2.5f , nullptr },
+		{ TRACK_9,	-TYPING_COL_SPACING * 2.17f, nullptr },
+		{ TRACK_10,	-TYPING_COL_SPACING * 1.83f, nullptr },
+		{ TRACK_11,	-TYPING_COL_SPACING * 1.5f , nullptr },
+		{ TRACK_12,	-TYPING_COL_SPACING * 1.17f, nullptr },
+		{ TRACK_13,	-TYPING_COL_SPACING * 0.83f, nullptr },
+		{ TRACK_14,	-TYPING_COL_SPACING * 0.5f , nullptr },
+		{ TRACK_15,	-TYPING_COL_SPACING * 0.17f, nullptr },
+		{ TRACK_16,	+TYPING_COL_SPACING * 0.17f, nullptr },
+		{ TRACK_17,	+TYPING_COL_SPACING * 0.5f , nullptr },
+		{ TRACK_18,	+TYPING_COL_SPACING * 0.83f, nullptr },
+		{ TRACK_19,	+TYPING_COL_SPACING * 1.17f, nullptr },
+		{ TRACK_20,	+TYPING_COL_SPACING * 1.5f , nullptr },
+		{ TRACK_21,	+TYPING_COL_SPACING * 1.83f, nullptr },
+		{ TRACK_22,	+TYPING_COL_SPACING * 2.17f, nullptr },
+		{ TRACK_23,	+TYPING_COL_SPACING * 2.5f , nullptr },
+		{ TRACK_24,	+TYPING_COL_SPACING * 3.17f, nullptr },
+		{ TRACK_25,	+TYPING_COL_SPACING * 3.5f, nullptr },
+		{ TRACK_26,	+TYPING_COL_SPACING * 4.17f, nullptr },
+	},
+},
+	{	// m_iInputColumn[NUM_GameController][NUM_GameButton]
+		{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+		16, 17, 18, 19, 20, 21, 22, 23, 24, 25, Style::END_MAPPING },
+		{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+		16, 17, 18, 19, 20, 21, 22, 23, 24, 25, Style::END_MAPPING }
+	},
+	{	// m_iColumnDrawOrder[MAX_COLS_PER_PLAYER];
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+	},
+	true, // m_bCanUseBeginnerHelper
+	false, // m_bLockDifficulties
+};
+
+static const Style* g_apGame_Typing_Styles[] =
+{
+	&g_Style_Typing_Single,
+	nullptr
+};
+
+static const Game g_Game_Typing =
+{
+	"typing",					// m_szName
+	g_apGame_Typing_Styles,				// m_apStyles
+	false,						// m_bCountNotesSeparately
+	false, // m_bTickHolds
+	false, // m_PlayersHaveSeparateStyles
+	{						// m_InputScheme
+		"typing",				// m_szName
+		NUM_TYPING_BUTTONS,			// m_iButtonsPerController
+		{	// m_szButtonNames
+			{ "Q",		TYPING_BUTTON_Q },
+			{ "A",		TYPING_BUTTON_A },
+			{ "Z",		TYPING_BUTTON_Z },
+			{ "W",		TYPING_BUTTON_W },
+			{ "S",		TYPING_BUTTON_S },
+			{ "X",		TYPING_BUTTON_X },
+			{ "E",		TYPING_BUTTON_E },
+			{ "D",		TYPING_BUTTON_D },
+			{ "C",		TYPING_BUTTON_C },
+			{ "R",		TYPING_BUTTON_R },
+			{ "F",		TYPING_BUTTON_F },
+			{ "V",		TYPING_BUTTON_V },
+			{ "T",		TYPING_BUTTON_T },
+			{ "G",		TYPING_BUTTON_G },
+			{ "B",		TYPING_BUTTON_B },
+			{ "Y",		TYPING_BUTTON_Y },
+			{ "H",		TYPING_BUTTON_H },
+			{ "N",		TYPING_BUTTON_N },
+			{ "U",		TYPING_BUTTON_U },
+			{ "J",		TYPING_BUTTON_J },
+			{ "M",		TYPING_BUTTON_M },
+			{ "I",		TYPING_BUTTON_I },
+			{ "K",		TYPING_BUTTON_K },
+			{ "O",		TYPING_BUTTON_O },
+			{ "L",		TYPING_BUTTON_L },
+			{ "P",		TYPING_BUTTON_P },
+		},
+		&g_AutoKeyMappings_Typing
+	},
+	{
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+		{ GameButtonType_Step },
+	},
+	TNS_W1,	// m_mapW1To
+	TNS_W2,	// m_mapW2To
+	TNS_W3,	// m_mapW3To
+	TNS_W4,	// m_mapW4To
+	TNS_W5,	// m_mapW5To
+};
 
 // Important:  Every game must define the buttons: "Start", "Back", "MenuLeft", "Operator" and "MenuRight"
-static const AutoMappings g_AutoKeyMappings_Dance = AutoMappings (
+static const AutoMappings g_AutoKeyMappings_Dance = AutoMappings(
 	"",
 	"",
 	"",
-	AutoMappingEntry( 0, KEY_DEL,		GAME_BUTTON_MENULEFT,		false ),
-	AutoMappingEntry( 0, KEY_PGDN,		GAME_BUTTON_MENURIGHT,		false ),
-	AutoMappingEntry( 0, KEY_HOME,		GAME_BUTTON_MENUUP,		false ),
-	AutoMappingEntry( 0, KEY_END,		GAME_BUTTON_MENUDOWN,		false ),
-	AutoMappingEntry( 0, KEY_LEFT,		DANCE_BUTTON_LEFT,		false ),
-	AutoMappingEntry( 0, KEY_RIGHT,		DANCE_BUTTON_RIGHT,		false ),
-	AutoMappingEntry( 0, KEY_UP,		DANCE_BUTTON_UP,		false ),
-	AutoMappingEntry( 0, KEY_DOWN,		DANCE_BUTTON_DOWN,		false ),
-	AutoMappingEntry( 0, KEY_KP_SLASH,		GAME_BUTTON_MENULEFT,		true ),
-	AutoMappingEntry( 0, KEY_KP_ASTERISK,	GAME_BUTTON_MENURIGHT,		true ),
-	AutoMappingEntry( 0, KEY_KP_HYPHEN,		GAME_BUTTON_MENUUP,		true ),
-	AutoMappingEntry( 0, KEY_KP_PLUS,		GAME_BUTTON_MENUDOWN,		true ),
-	AutoMappingEntry( 0, KEY_KP_C4,		DANCE_BUTTON_LEFT,		true ),
-	AutoMappingEntry( 0, KEY_KP_C6,		DANCE_BUTTON_RIGHT,		true ),
-	AutoMappingEntry( 0, KEY_KP_C8,		DANCE_BUTTON_UP,		true ),
-	AutoMappingEntry( 0, KEY_KP_C2,		DANCE_BUTTON_DOWN,		true ),
-	AutoMappingEntry( 0, KEY_KP_C7,		DANCE_BUTTON_UPLEFT,		true ),
-	AutoMappingEntry( 0, KEY_KP_C9,		DANCE_BUTTON_UPRIGHT,		true )
+	AutoMappingEntry(0, KEY_DEL, GAME_BUTTON_MENULEFT, false),
+	AutoMappingEntry(0, KEY_PGDN, GAME_BUTTON_MENURIGHT, false),
+	AutoMappingEntry(0, KEY_HOME, GAME_BUTTON_MENUUP, false),
+	AutoMappingEntry(0, KEY_END, GAME_BUTTON_MENUDOWN, false),
+	AutoMappingEntry(0, KEY_LEFT, DANCE_BUTTON_LEFT, false),
+	AutoMappingEntry(0, KEY_RIGHT, DANCE_BUTTON_RIGHT, false),
+	AutoMappingEntry(0, KEY_UP, DANCE_BUTTON_UP, false),
+	AutoMappingEntry(0, KEY_DOWN, DANCE_BUTTON_DOWN, false),
+	AutoMappingEntry(0, KEY_KP_SLASH, GAME_BUTTON_MENULEFT, true),
+	AutoMappingEntry(0, KEY_KP_ASTERISK, GAME_BUTTON_MENURIGHT, true),
+	AutoMappingEntry(0, KEY_KP_HYPHEN, GAME_BUTTON_MENUUP, true),
+	AutoMappingEntry(0, KEY_KP_PLUS, GAME_BUTTON_MENUDOWN, true),
+	AutoMappingEntry(0, KEY_KP_C4, DANCE_BUTTON_LEFT, true),
+	AutoMappingEntry(0, KEY_KP_C6, DANCE_BUTTON_RIGHT, true),
+	AutoMappingEntry(0, KEY_KP_C8, DANCE_BUTTON_UP, true),
+	AutoMappingEntry(0, KEY_KP_C2, DANCE_BUTTON_DOWN, true),
+	AutoMappingEntry(0, KEY_KP_C7, DANCE_BUTTON_UPLEFT, true),
+	AutoMappingEntry(0, KEY_KP_C9, DANCE_BUTTON_UPRIGHT, true)
 );
 
 // xxx: get this from the theme? (see others)
@@ -3225,6 +3449,7 @@ static const Game *g_Games[] =
 	&g_Game_Popn,
 	&g_Game_Lights,
 	&g_Game_Kickbox,
+	&g_Game_Typing,
 };
 
 GameManager::GameManager()
