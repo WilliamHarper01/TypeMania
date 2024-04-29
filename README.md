@@ -1,11 +1,7 @@
-StepMania
+TypeMania
 =========
 
-StepMania is an advanced cross-platform rhythm game for home and arcade use.
-
-[![Continuous integration](https://github.com/stepmania/stepmania/workflows/Continuous%20integration/badge.svg?branch=5_1-new)](https://github.com/stepmania/stepmania/actions?query=workflow%3A%22Continuous+integration%22+branch%3A5_1-new)
-[![Build Status](https://travis-ci.org/stepmania/stepmania.svg?branch=master)](https://travis-ci.org/stepmania/stepmania)
-[![Build status](https://ci.appveyor.com/api/projects/status/uvoplsnyoats81r2?svg=true)](https://ci.appveyor.com/project/Nickito12/stepmania)
+TypeMania is a cross-platform, educational rhythm game for improving typing speed, and accuracy. The game uses the StepMania engine.
 
 ## Installation
 ### From Packages
@@ -18,7 +14,7 @@ For those that do not wish to compile the game on their own and use a binary rig
 
 ### From Source
 
-StepMania can be compiled using [CMake](http://www.cmake.org/). More information about using CMake can be found in both the `Build` directory and CMake's documentation.
+TypeMania can be compiled using [CMake](http://www.cmake.org/). More information about using CMake can be found in both the `Build` directory and CMake's documentation.
 
 ## Resources
 
@@ -27,7 +23,7 @@ StepMania can be compiled using [CMake](http://www.cmake.org/). More information
 * Lua for SM5: https://quietly-turning.github.io/Lua-For-SM5/
 * Lua API Documentation can be found in the Docs folder.
 
-## Licensing Terms
+## StepMania Licensing Terms
 
 In short- you can do anything you like with the game (including sell products made with it), provided you *do not*:
 
