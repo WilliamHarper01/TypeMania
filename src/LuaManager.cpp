@@ -814,6 +814,7 @@ Dialog::Result LuaHelpers::ReportScriptError(RString const& Error, RString Error
 		InReportScriptError= false;
 	}
 	LOG->Warn( "%s", Error.c_str());
+
 	if(UseAbort)
 	{
 		RString with_correct= Error + "  Correct this and click Retry, or Cancel to break.";

@@ -1165,7 +1165,7 @@ void NoteDataUtil::CalculateRadarValues( const NoteData &in, float fSongSeconds,
 	// Walking the notes complete, now assign any values that remain. -Kyz
 	if(fSongSeconds > 0.0f)
 	{
-		out[RadarCategory_Stream]= (total_taps / fSongSeconds) / 7.0f;
+		out[RadarCategory_Stream]= ((total_taps - out[RadarCategory_Jumps]) / fSongSeconds) / 3.5f;
 		// As seen in GetVoltageRadarValue:  Don't use the timing data, just
 		// pretend the beats are evenly spaced. -Kyz
 		float avg_bps= in.GetLastBeat() / fSongSeconds;

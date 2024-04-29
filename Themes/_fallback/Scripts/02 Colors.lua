@@ -172,10 +172,11 @@ function StepsOrTrailToColor(StepsOrTrail)
 	return CustomDifficultyToColor( StepsOrTrailToCustomDifficulty(stepsOrTrail) )
 end
 
-local stage_default= color("#000000")
+local stage_default= color("#00ff00")
 function StageToColor( stage )
 	if not GameColor or not GameColor.Stage then return stage_default end
-	return GameColor.Stage[stage] or stage_default
+	--return GameColor.Stage[stage] or stage_default
+	return stage_default
 end
 
 function StageToStrokeColor( stage )

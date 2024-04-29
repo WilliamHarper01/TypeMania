@@ -184,6 +184,7 @@ Dialog::Result Dialog::OKCancel( RString sMessage, RString sID )
 	return ret;
 }
 
+
 Dialog::Result Dialog::AbortRetryIgnore( RString sMessage, RString sID )
 {
 	Dialog::Init();
@@ -195,6 +196,7 @@ Dialog::Result Dialog::AbortRetryIgnore( RString sMessage, RString sID )
 		return g_NullDriver.AbortRetryIgnore( sMessage, sID );
 
 	RageThread::SetIsShowingDialog( true );
+	
 	
 	// only show Dialog if windowed
 	Dialog::Result ret;

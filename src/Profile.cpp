@@ -25,6 +25,7 @@
 #include "Game.h"
 #include "CharacterManager.h"
 #include "Character.h"
+#include "ezsockets.h"
 
 #include <algorithm>
 
@@ -66,8 +67,6 @@ static const char* ProfileTypeNames[] = {
 XToString(ProfileType);
 StringToX(ProfileType);
 LuaXType(ProfileType);
-
-
 
 Profile::~Profile()
 {
@@ -1228,6 +1227,23 @@ void Profile::LoadSongsFromDir(RString const& dir, ProfileSlot prof_slot)
 ProfileLoadResult Profile::LoadStatsFromDir(RString dir, bool require_signature)
 {
 	dir= dir + PROFILEMAN->GetStatsPrefix();
+
+	//Will: if we have a server holding our profiles
+	//		we can download it, save it to disk, then load it normally
+	if (GET_PROFILES_FROM_NET)
+	{
+		// connect to server
+		EzSockets * sock = new EzSockets();
+		sock->create();
+		sock->connect("127.0.0.1", 8050);
+
+		// ask for what profile we want
+
+		sock->SendData(dir);
+
+		// wait for profile to come in
+	}
+
 	// Check for the existance of stats.xml
 	RString fn = dir + STATS_XML;
 	bool compressed = false;

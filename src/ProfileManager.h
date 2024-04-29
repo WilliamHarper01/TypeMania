@@ -8,6 +8,8 @@
 #include "Grade.h"
 #include "Profile.h"
 
+#define GET_PROFILES_FROM_NET true
+
 class Song;
 class Steps;
 class Style;

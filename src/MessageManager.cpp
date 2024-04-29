@@ -206,6 +206,7 @@ void MessageManager::Unsubscribe( IMessageSubscriber* pSubscriber, MessageID m )
 
 void MessageManager::Broadcast( Message &msg ) const
 {
+
 	if(m_Logging)
 	{
 		LOG->Trace("MESSAGEMAN:Broadcast: %s", msg.GetName().c_str());
