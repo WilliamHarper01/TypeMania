@@ -1,7 +1,7 @@
 TypeMania
 =========
 
-TypeMania is a cross-platform, educational rhythm game for improving typing speed, and accuracy. The game uses the StepMania engine.
+TypeMania is a cross-platform, educational rhythm game built on the StepMania engine.
 
 ## Installation
 ### From Packages
